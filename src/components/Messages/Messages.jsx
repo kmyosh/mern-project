@@ -29,9 +29,11 @@ export default function Messages({
   // get receiver data
   useEffect(() => {
     async function getReceiverData() {
+      
       try {
-        console.log(receiverId) //receiver id undefined on first click into active chat
-        const payload = await axios.get(`api/users/${receiverId}`);
+        const rId = currentChat?.members?.find((id) => id !== currentUserId);
+        console.log("currentChat: ", currentChat) //receiver id undefined on first click into active chat
+        const payload = await axios.get(`api/users/${rId}`);
         if (payload.status === 200) {
           setReceiverData(payload.data);
         }

@@ -23,7 +23,7 @@ export default function ChatBox({
   const receiverId = currentChat?.members?.find((id) => id !== currentUserId);
   // get receiver data
   useEffect(() => {
-    // const receiverId = currentChat?.members?.find((id) => id !== currentUserId);
+    console.log("receiveId", receiverId);
     setUserData(receiverId);
   }, [currentChat, currentUserId]);
 
@@ -38,7 +38,7 @@ export default function ChatBox({
       senderId: currentUserId,
       text: newMessage,
     };
-    // const receiverId = currentChat?.members?.find((id) => id !== currentUserId);
+
     try {
       let newMessage = await axios.post(`api/messages`, messageInfo);
       socket.current.emit("send-message", {
@@ -73,7 +73,6 @@ export default function ChatBox({
           <ChatMemberModal
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
-
           />
           <div className="messages-container">
             <Messages
@@ -94,16 +93,18 @@ export default function ChatBox({
             justifyContent="center"
             sx={{ width: "50vw", justifyItems: "center", margin: "auto" }}
           >
-            <InputEmoji
-              color="secondary"
-              value={newMessage}
-              onChange={handleChange}
-            />
-            <IconButton>
-              <SendIcon color="secondary" onClick={handleSend}>
-                Send
-              </SendIcon>
-            </IconButton>
+            <form onSubmit={handleSend}>
+              <InputEmoji
+                color="secondary"
+                value={newMessage}
+                onChange={handleChange}
+              />
+
+              <button type="submit">
+                <IconButton>SEND </IconButton>
+              </button>
+              <SendIcon color="secondary">Send</SendIcon>
+            </form>
           </Stack>
         </div>
       ) : (
