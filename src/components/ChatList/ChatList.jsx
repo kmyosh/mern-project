@@ -155,7 +155,6 @@ export default function ChatList({ user }) {
             <InputLabel sx={{ border: "none" }}>Find Friends</InputLabel>
             <Select>
               <MenuItem value={""}>
-                
                 {/* <TextField
                   sx={{
                     width: "25vw",

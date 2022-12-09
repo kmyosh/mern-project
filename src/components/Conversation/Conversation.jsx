@@ -60,8 +60,8 @@ export default function Conversation({ currentUserId, chat, online, user }) {
       spacing={3}
       sx={
         {
-          // padding: "5px", goes here
-          // alignItems:center goes here
+          // padding: "5px",
+          alignItems:"center"
         }
       }
     >

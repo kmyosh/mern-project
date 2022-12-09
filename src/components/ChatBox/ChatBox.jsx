@@ -99,7 +99,6 @@ export default function ChatBox({
                 value={newMessage}
                 onChange={handleChange}
               />
-
               <button type="submit">
                 <IconButton>SEND </IconButton>
               </button>
