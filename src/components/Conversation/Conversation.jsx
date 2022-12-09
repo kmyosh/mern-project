@@ -6,6 +6,8 @@ import { Avatar, Badge } from "@mui/material";
 import Stack from "@mui/material/Stack";
 // testing
 import { styled } from "@mui/material/styles";
+import CircleIcon from "@mui/icons-material/Circle";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 
 // const StyledBadge = styled(Badge)(({ theme }) => ({
 //   "& .MuiBadge-badge": {
@@ -58,12 +60,12 @@ export default function Conversation({ currentUserId, chat, online, user }) {
     <Grid
       container
       spacing={3}
-      sx={
-        {
-          // padding: "5px",
-          alignItems:"center"
-        }
-      }
+      sx={{
+        paddingLeft: "5px",
+        alignItems: "center",
+        // overflow: "scroll",
+        textAlign: "left",
+      }}
     >
       <Grid item xs={4}>
         {online ? (
@@ -74,7 +76,7 @@ export default function Conversation({ currentUserId, chat, online, user }) {
                 ? "./logo192.png"
                 : userData?.profilePicture
             }
-            style={{border: "4px solid green"}}
+            style={{ border: "4px solid green" }}
           />
         ) : (
           <img
@@ -88,7 +90,7 @@ export default function Conversation({ currentUserId, chat, online, user }) {
         )}
       </Grid>
       <Grid item xs={4}>
-        <span>
+        <span className="name">
           {userData?.firstname}&nbsp;{userData?.lastname}
         </span>
         {/* message preview goes here */}
@@ -103,11 +105,15 @@ export default function Conversation({ currentUserId, chat, online, user }) {
         {/* notification goes here */}
 
         {unreadMessages === 0 ? (
-          ""
+          <div></div>
         ) : (
-          <div style={{ border: "1px solid black" }}>
-            <strong>{unreadMessages}</strong>
-          </div>
+          <Badge
+            className="badge"
+            color="secondary"
+            badgeContent={unreadMessages}
+          >
+            <MailOutlineIcon color="primary"></MailOutlineIcon>
+          </Badge>
         )}
       </Grid>
     </Grid>

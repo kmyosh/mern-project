@@ -1,12 +1,19 @@
-.profileImg{
-    border:2px solid #1165EB;
-    border-radius: 100px;
-    width:60px;
-    height:60px;
-    margin: 10px;
-   
-  }
+.profileImg {
+  border: 2px solid #1165eb;
+  border-radius: 100px;
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+}
 
-  .statusIcon {
-    width:40px
-  }
+.statusIcon {
+  width: 40px;
+}
+.badge {
+  align-items: center;
+  justify-items: center;
+}
+.name {
+  color: #2f15d1;
+  font-weight: bold;
+}
